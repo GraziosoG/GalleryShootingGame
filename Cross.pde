@@ -31,6 +31,7 @@ class Cross {
       if ((my < y + 15) & (my > y - 15)){
         if ((mx < x + 30) & (mx > x - 30)){
           score.correct += 1;
+          score.crossget += 1;
           found = true;
           canCheck = false;
           speed = 0;
@@ -39,6 +40,7 @@ class Cross {
       else if ((my < y + 30) & (my > y - 30)){
         if ((mx < x + 15) & (mx > x - 15)){
           score.correct += 1;
+          score.crossget += 1;
           found = true;
           canCheck = false;
           speed = 0;

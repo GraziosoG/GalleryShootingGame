@@ -1,16 +1,23 @@
 class Score {
-  int correct = 0;
-  int tries;
+  int correct = 0; //points earned
+  int tries; //used to count tries left
+  int total_tries; //tries available to players
+  int crossget = 0;
+  int snowmanget = 0;
+  int treeget = 0;
 
   Score (int tries){
     this.tries = tries;
+    this.total_tries = tries;
   }
   
   void display(){
     textSize(20);
     fill(255);
-    text("Tries Left: " + nf(score.tries), 500, 700);
-    text("Correct: " + nf(score.correct), 500, 730);
+    text("Tries Left: " + nf(score.tries), 550, 700);
+    text("Points Earned: " + nf(score.correct), 550, 730);
+    fill(255);
+    text("Seconds remaining: " + nf(timer.second(), 3), 200, 730);
   }
   
   void pause(){
@@ -24,7 +31,7 @@ class Score {
     for ( int m = 0; m < trees.size(); m++){ // check crosses mouse clicks
       trees.get(m).canCheck = false;
     }
-    text("Press down arrow to continue the game", 200, 100);
+    text("Press down arrow to continue the game", width/2, 90);
   }
   
   void resume(){
@@ -46,15 +53,39 @@ class Score {
     }
   }
   
-  void end(){
-    noLoop();  
-    background(200);
-    fill(0);
-    text("Gallery Shooting Game", 260, 50);
-    text("Press the right arrow to start a new game", 200, 100);
-    //print if won or not (got all targets)
-    //print game statistics
-    //keyboard function to start new game maybe do it in keyReleased in main
-     
+  void end(){ 
+    if (!board.added){
+      board.writeRecord(playerName, correct);
+    }
+    fill(255);
+    fill(138, 235, 245);
+    textSize(24);
+    text("Player:  " + playerName, width/2, 95);
+    text("You used " + (total_tries - tries) + " tries and earned " + correct + " points", width/2, 140);
+    text("Targets Captured  Crosses: " + crossget + "  Snowmen: " + snowmanget + "  Tree: " + treeget, width/2, 170);
+    textSize(22);
+    fill(255, 0, 0);
+    if (correct == 12){
+      text("Congratulations! You won the game!", width/2, 245);
+    } else {
+      text("Sorry you did not get all the targets, nice try!", width/2, 245);
+    }
+    textSize(20);
+    fill(247, 232, 62);
+    text("Press the up arrow to start a new game", width/2, 590);    
+    fill(255);
+    textSize(20);
+  }
+  
+  void noMoreTries(){   
+    end();
+    textSize(20);
+    text("You have used up all of your tries", width/2, 200);
+  }
+  
+  void noMoreTime(){   
+    end();
+    textSize(20);
+    text("You ran out of time", width/2, 200);
   }
 }

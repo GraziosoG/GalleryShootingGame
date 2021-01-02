@@ -32,6 +32,7 @@ class Tree {
       if ((my > y + 50) & (my < y + 65)){ // check click on stump
         if ((mx < x + 5) & (mx > x - 5)){
           score.correct += 1;
+          score.treeget += 1;
           found = true;
           canCheck = false;
         }
@@ -39,6 +40,7 @@ class Tree {
       else if ((my > y) & (my < y + 20)){
         if (dist(mx, my, x, y) < 20){
           score.correct += 1;
+          score.treeget += 1;
           found = true;
           canCheck = false;
         }
@@ -46,6 +48,7 @@ class Tree {
       else if ((my > y) & (my < y + 40)){
         if (dist(mx, my, x, y) < 40){
           score.correct += 1;
+          score.treeget += 1;
           found = true;
           canCheck = false;
         }
@@ -53,6 +56,7 @@ class Tree {
       else if ((my > y) & (my < y + 60)){
         if (dist(mx, my, x, y) < 60){
           score.correct += 1;
+          score.treeget += 1;
           found = true;
           canCheck = false;
         }

@@ -86,14 +86,16 @@ class Snowman {
   
   void checkMouseClick(int mx, int my){
     if ((found == false) & (canCheck == true)){
-      if (dist(mx, my, x, y) < 40){
-        score.correct += 1;
+      if (dist(mx, my, x, y) < 20){
+        score.correct += 2;
+        score.snowmanget += 1;
         found = true;
         canCheck = false;
         moving = false;
       }
-      else if (dist(mx, my, x, y+40) < 50){
-        score.correct += 1;
+      else if (dist(mx, my, x, y+40) < 25){
+        score.correct += 2;
+        score.snowmanget += 1;
         found = true;
         canCheck = false;
         moving = false;

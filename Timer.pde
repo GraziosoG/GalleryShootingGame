@@ -3,6 +3,7 @@ class Timer {
   int startTime = 0, stopTime = 0, past = 0;
   boolean running = false; 
   boolean resume = false;
+  boolean done = false;
   
   Timer (int countdown){
     this.countdown = countdown;
